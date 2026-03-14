@@ -359,58 +359,32 @@ rsa-cryptosystem
 │
 ├── README.md
 ├── LICENSE
-│
+├── .gitignore
 ├── docs/
-│   ├── rsa_theory.md
-│   ├── modular_arithmetic.md
-│   ├── euler_theorem.md
-│   └── attacks.md
-│
+│   └── ...
+├── demos/
+│   ├── basic_rsa_demo.py
+│   └── ascii_message_demo.py
 ├── src/
+│   ├── __init__.py
 │   ├── modular_arithmetic.py
 │   ├── euclidean_algorithm.py
 │   ├── prime_generation.py
 │   ├── key_generation.py
 │   ├── encryption.py
-│   ├── decryption.py
-│   └── rsa_demo.py
-│
-├── examples/
-│   ├── small_rsa_demo.py
-│   └── ascii_message_demo.py
-│
+│   └── decryption.py
 └── tests/
-    ├── test_euclid.py
-    ├── test_modexp.py
-    └── test_rsa.py
+    ├── test_euclidean_algorithm.py
+    ├── test_key_generation.py
+    ├── test_modular_arithmetic.py
+    ├── test_prime_generation.py
+    ├── test_rsa_pipeline.py
+    └── __init__.py
 ```
 
 ---
 
-# Running the Demonstration
 
-Example command:
-
-```
-python src/rsa_demo.py
-```
-
-Example output:
-
-```
-p = 61
-q = 53
-n = 3233
-φ(n) = 3120
-e = 17
-d = 2753
-
-Message: 65
-Ciphertext: 2790
-Decrypted: 65
-```
-
----
 
 # Applications of RSA
 
