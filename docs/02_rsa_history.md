@@ -285,3 +285,50 @@ Key historical points include:
 | 2009 | RSA-768 successfully factored |
 
 RSA remains one of the most influential cryptographic algorithms ever created and continues to play a critical role in securing digital communication worldwide.
+
+---
+
+# 14. Conclusion
+
+The history of RSA demonstrates how a single mathematical insight—the use of one-way functions in public-key cryptography—can revolutionize an entire field. From its invention in 1977 to its current ubiquitous use in securing the internet, RSA has proven to be both theoretically elegant and practically robust.
+
+Understanding this history provides valuable context for appreciating both the achievements and the future challenges of cryptography, particularly as quantum computing approaches and new cryptographic systems emerge.
+
+---
+
+# 15. Next Steps
+
+RSA's history and development provide context for understanding:
+
+- **[Modular Arithmetic](03_modular_arithmetic.md)** - Mathematical foundation
+- **[Euler's Theorem](07_euler_theorem.md)** - Core mathematical principle
+- **[RSA Key Generation](08_rsa_key_generation.md)** - Implementation details
+- **[Real-World RSA Usage](16_real_world_rsa_usage.md)** - Modern applications
+
+---
+
+# 16. References
+
+1. Rivest, R. L., Shamir, A., & Adleman, L. (1978). "A Method for Obtaining Digital Signatures and Public-Key Cryptosystems." *Communications of the ACM*, 21(2), 120-126.
+
+2. Diffie, W., & Hellman, M. E. (1976). "New Directions in Cryptography." *IEEE Transactions on Information Theory*, 22(6), 644-654.
+
+3. Kahn, D. (1967). *The Codebreakers: The Comprehensive History of Secret Communication from Ancient Times to the Internet*. Scribner.
+
+4. Levy, D. N. L. (2001). *Crypto: How the Code Rebels Beat the Government Saving Privacy in the Digital Age*. Viking.
+
+5. Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C. (2009). *Introduction to Algorithms* (3rd ed.). MIT Press.
+
+6. Singh, S. (1999). *The Code Breaker: The Story of the Secret Writing*. Doubleday.
+
+7. Burton, D. M. (2010). *Elementary Number Theory* (7th ed.). McGraw-Hill.
+
+8. Hardy, G. H., & Wright, E. M. (2008). *An Introduction to the Theory of Numbers* (6th ed.). Oxford University Press.
+
+9. Stallings, W. (2017). *Cryptography and Network Security* (6th ed.). Pearson Education.
+
+10. Schneier, B. (1996). *Applied Cryptography: Protocols, Algorithms, and Source Code in C* (2nd ed.). John Wiley & Sons.
+
+11. Ellis, J. H. (1970). "The Possibility of Secure Non-Secret Digital Encryption." GCHQ Report.
+
+12. Cocks, C. C. (1973). "A Note on Non-Secret Encryption." GCHQ Report.

@@ -276,3 +276,41 @@ Cryptography is a fundamental discipline that enables secure communication in mo
 Modern cryptographic systems rely on well-studied mathematical principles and computational hardness assumptions. As technology evolves and computational capabilities increase, cryptographic methods must continually adapt to maintain security.
 
 Understanding the basic concepts of cryptography provides the foundation necessary to study more advanced systems such as public-key cryptography, digital signatures, and secure communication protocols.
+
+---
+
+# 13. Next Steps
+
+This introduction to cryptography provides context for understanding:
+
+- **[RSA History](02_rsa_history.md)** - Development of the RSA cryptosystem
+- **[Modular Arithmetic](03_modular_arithmetic.md)** - Mathematical foundation of RSA
+- **[RSA Full Algorithm](13_rsa_full_algorithm.md)** - Complete RSA system
+
+---
+
+# 14. References
+
+1. Rivest, R. L., Shamir, A., & Adleman, L. (1978). "A Method for Obtaining Digital Signatures and Public-Key Cryptosystems." *Communications of the ACM*, 21(2), 120-126.
+
+2. Diffie, W., & Hellman, M. E. (1976). "New Directions in Cryptography." *IEEE Transactions on Information Theory*, 22(6), 644-654.
+
+3. Kerckhoffs, A. (1883). "La Cryptographie Militaire." *Journal des Sciences Militaires*, IX, 5-38.
+
+4. Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C. (2009). *Introduction to Algorithms* (3rd ed.). MIT Press.
+
+5. Stallings, W. (2017). *Cryptography and Network Security* (6th ed.). Pearson Education.
+
+6. Schneier, B. (1996). *Applied Cryptography: Protocols, Algorithms, and Source Code in C* (2nd ed.). John Wiley & Sons.
+
+7. Shannon, C. E. (1949). "Communication Theory of Secrecy Systems." *Bell System Technical Journal*, 28(4), 656-715.
+
+8. Kahn, D. (1967). *The Codebreakers: The Comprehensive History of Secret Communication from Ancient Times to the Internet*. Scribner.
+
+9. Durfee, G., & Hellman, M. E. (1996). "Hiding Signatures in Linear Redundancy Check Codes." Technical Report.
+
+10. NIST. (2019). "Recommendation for Key Management: Part 1 – General." National Institute of Standards and Technology, Special Publication 800-57.
+
+11. ISO/IEC. (2012). "Information technology – Security techniques – Cryptographic techniques." ISO/IEC 27032:2012.
+
+12. Burton, D. M. (2010). *Elementary Number Theory* (7th ed.). McGraw-Hill.

@@ -277,22 +277,80 @@ def modular_exponentiation(base, exponent, modulus):
 
     return result
 ```
-This algorithm reduces computational complexity from:
 
-𝑂
-(
-𝑒
-)
-O(e)
+This algorithm reduces computational complexity from \(O(e)\) to \(O(\log e)\), which makes modern cryptographic systems practical.
 
-to
+---
 
-𝑂
-(
-log
-⁡
-𝑒
-)
-O(loge)
+# 9. Practical Examples
 
-which makes modern cryptographic systems practical.
+## Example 1: Simple Modular Addition
+
+Let's compute \(17 + 28 \pmod{13}\):
+
+1. Perform addition: \(17 + 28 = 45\)
+2. Reduce modulo 13: \(45 \div 13 = 3\) remainder \(6\)
+3. Result: \(17 + 28 \equiv 6 \pmod{13}\)
+
+Alternatively, reduce each operand first:
+- \(17 \equiv 4 \pmod{13}\)
+- \(28 \equiv 2 \pmod{13}\)
+- \((4 + 2) \bmod 13 = 6 \pmod{13}\)
+
+---
+
+## Example 2: Modular Multiplication
+
+Let's compute \(7 \times 11 \pmod{15}\):
+
+1. Perform multiplication: \(7 \times 11 = 77\)
+2. Reduce modulo 15: \(77 \div 15 = 5\) remainder \(2\)
+3. Result: \(7 \times 11 \equiv 2 \pmod{15}\)
+
+---
+
+## Example 3: Modular Exponentiation
+
+Let's compute \(3^{10} \pmod{7}\) using the square-and-multiply algorithm:
+
+| Step | Exponent (binary) | Operation | Result |
+|------|------|------|------|
+| 0 | 1010 | Initialize | base=3, result=1 |
+| 1 | 1010 | Exponent is even, square | base=9≡2, result=1 |
+| 2 | 0101 | Exponent is odd, multiply | base=4, result=2 |
+| 3 | 0010 | Exponent is even, square | base=16≡2, result=2 |
+| 4 | 0001 | Exponent is odd, multiply | base=4, result=4 |
+| 5 | 0000 | Done | Final: 4 |
+
+Therefore, \(3^{10} \equiv 4 \pmod{7}\).
+
+---
+
+# 10. Key Takeaways
+
+- **Modular arithmetic** restricts operations to a fixed range \(\{0, 1, 2, \ldots, n-1\}\)
+- **Congruence** defines equivalence classes of integers that leave the same remainder modulo \(n\)
+- **Operations** (addition, subtraction, multiplication, exponentiation) preserve congruence relationships
+- **Modular reduction** keeps intermediate values bounded, enabling efficient computation on large numbers
+- **RSA encryption and decryption** rely entirely on modular exponentiation: \(C = M^e \bmod n\) and \(M = C^d \bmod n\)
+- **Efficient algorithms** like square-and-multiply reduce exponentiation from exponential to logarithmic time complexity
+
+---
+
+# 11. Next Steps
+
+This foundational knowledge of modular arithmetic prepares you for understanding:
+
+- **[Euclidean Algorithm](04_euclidean_algorithm.md)** - Finding the greatest common divisor
+- **[Modular Inverse](05_modular_inverse.md)** - Computing multiplicative inverses in modular arithmetic
+- **[Euler's Totient Function](06_euler_totient_function.md)** - Computing \(\phi(n)\) for RSA key generation
+- **[Euler's Theorem](07_euler_theorem.md)** - The mathematical foundation of RSA
+
+---
+
+# References
+
+1. Rivest, R. L., Shamir, A., & Adleman, L. (1978). "A method for obtaining digital signatures and public-key cryptosystems." *Communications of the ACM*, 21(2), 120-126.
+2. Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C. (2009). *Introduction to Algorithms* (3rd ed.). MIT Press.
+3. Stallings, W. (2017). *Cryptography and Network Security* (6th ed.). Pearson.
+4. Burton, D. M. (2010). *Elementary Number Theory* (7th ed.). McGraw-Hill.
