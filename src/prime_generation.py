@@ -1,41 +1,37 @@
 import random
 
-def is_prime(n):
-    """Check if a number is prime using trial division."""
-    
+def is_prime(n):    
     if n < 2:
-        return False
+        return False  # numbers less than 2 are not prime
 
     if n == 2:
-        return True
+        return True  # 2 is prime
 
     if n % 2 == 0:
-        return False
+        return False  # even numbers >2 are not prime
 
     i = 3
     while i * i <= n:
         if n % i == 0:
-            return False
-        i += 2
+            return False  # divisible by an odd factor
+        i += 2  # test only odd divisors
 
-    return True
-
+    return True  # no divisors found
 
 
 def generate_prime(start=100, end=1000):
-    """Generate a random prime number in a range."""
-    
     while True:
-        candidate = random.randint(start, end)
+        candidate = random.randint(start, end)  # random candidate in range
 
         if is_prime(candidate):
-            return candidate
-        
+            return candidate  # return the first prime found
+
+
 def check_identical_primes():
-    p = generate_prime()
-    q = generate_prime()
+    p = generate_prime()  # generate first prime
+    q = generate_prime()  # generate second prime
 
     while p == q:
-        q = generate_prime()
+        q = generate_prime()  # avoid identical primes
 
-    return p, q
+    return p, q  # return distinct primes

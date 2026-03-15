@@ -3,15 +3,15 @@ from src.prime_generation import check_identical_primes
 from src.euclidean_algorithm import modular_inverse
 
 def generate_rsa_keys():
-    p, q = check_identical_primes()
-    n = p * q
-    phi = (p - 1) * (q - 1)
-    e = 65537
+    p, q = check_identical_primes()  # choose two primes p and q
+    n = p * q  # modulus n
+    phi = (p - 1) * (q - 1)  # Euler totient phi(n)
+    e = 65537  # standard public exponent
     if math.gcd(e, phi) != 1:
-        e = 3
+        e = 3  # fallback small exponent if not coprime
         while math.gcd(e, phi) != 1:
-            e += 2
-    d = modular_inverse(e, phi)
+            e += 2  # find odd e coprime with phi(n)
+    d = modular_inverse(e, phi)  # private exponent d
     return {
         "p": p,
         "q": q,
@@ -38,5 +38,5 @@ def display_key_generation(keys):
     print(f"Private Key (d, n) = {keys['private_key']}")
 
 if __name__ == "__main__":
-    keys = generate_rsa_keys()
-    display_key_generation(keys)
+    keys = generate_rsa_keys()  # generate RSA keys when run directly
+    display_key_generation(keys)  # print keys for demonstration

@@ -2,7 +2,7 @@ from src.key_generation import generate_rsa_keys
 import math
 
 def test_key_generation_structure():
-    keys = generate_rsa_keys()
+    keys = generate_rsa_keys()  # generate keys and check required fields
 
     assert "p" in keys
     assert "q" in keys
@@ -13,12 +13,12 @@ def test_key_generation_structure():
 
 def test_n_correct():
     keys = generate_rsa_keys()
-    assert keys["n"] == keys["p"] * keys["q"]
+    assert keys["n"] == keys["p"] * keys["q"]  # modulus should be p*q
 
 def test_phi_correct():
     keys = generate_rsa_keys()
-    assert keys["phi"] == (keys["p"] - 1) * (keys["q"] - 1)
+    assert keys["phi"] == (keys["p"] - 1) * (keys["q"] - 1)  # totient formula
 
 def test_e_coprime_phi():
     keys = generate_rsa_keys()
-    assert math.gcd(keys["e"], keys["phi"]) == 1
+    assert math.gcd(keys["e"], keys["phi"]) == 1  # e must be coprime with phi

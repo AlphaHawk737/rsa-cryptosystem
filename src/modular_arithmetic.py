@@ -1,5 +1,4 @@
 def modular_exponentiation(base, exponent, modulus):
-    """Calculate (base^exponent) mod modulus using modular exponentiation."""
     result = 1
     base = base % modulus  # Handle cases where base >= modulus
 
@@ -9,7 +8,7 @@ def modular_exponentiation(base, exponent, modulus):
             result = (result * base) % modulus
         
         # Now exponent must be even
-        exponent = exponent >> 1  # Equivalent to exponent //= 2
+        exponent = exponent >> 1  # Known as Binary Right Shift, equivalent to exponent //= 2
         base = (base * base) % modulus  # Square the base
 
     return result
