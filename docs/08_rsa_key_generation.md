@@ -19,62 +19,62 @@ This document covers the complete key generation process with mathematical found
 
 ### Step 1: Select Two Large Prime Numbers
 
-Choose two distinct, large prime numbers \(p\) and \(q\).
+Choose two distinct, large prime numbers $p$ and $q$.
 
 **Requirements**:
 - Both should be large (typically 1024-2048 bits each)
-- Should be distinct: \(p \neq q\)
+- Should be distinct: $p \neq q$
 - Should be randomly generated
 - Should pass primality tests
 
-**Why primes?** RSA security depends on the difficulty of factoring \(n = pq\).
+**Why primes?** RSA security depends on the difficulty of factoring $n = pq$.
 
 ### Step 2: Compute the Modulus
 
-\[
+$$
 n = p \times q
-\]
+$$
 
-This is the modulus used in both encryption and decryption. The size of \(n\) determines RSA key length (e.g., 2048-bit RSA uses a 2048-bit \(n\)).
+This is the modulus used in both encryption and decryption. The size of $n$ determines RSA key length (e.g., 2048-bit RSA uses a 2048-bit $n$).
 
 ### Step 3: Compute Euler's Totient
 
-\[
+$$
 \phi(n) = (p-1) \times (q-1)
-\]
+$$
 
 This value is essential for computing the private exponent and must be kept secret.
 
 ### Step 4: Select Public Exponent
 
-Choose an integer \(e\) such that:
-- \(1 < e < \phi(n)\)
-- \(\gcd(e, \phi(n)) = 1\) (must be coprime to \(\phi(n)\))
+Choose an integer $e$ such that:
+- $1 < e < \phi(n)$
+- $\gcd(e, \phi(n)) = 1$ (must be coprime to $\phi(n)$)
 
 **Common choices**:
-- \(e = 65537 = 2^{16} + 1\) (most common due to efficiency)
-- \(e = 3\) (less common but faster)
-- \(e = 17\)
+- $e = 65537 = 2^{16} + 1$ (most common due to efficiency)
+- $e = 3$ (less common but faster)
+- $e = 17$
 
 ### Step 5: Compute Private Exponent
 
-Find \(d\) such that:
+Find $d$ such that:
 
-\[
+$$
 ed \equiv 1 \pmod{\phi(n)}
-\]
+$$
 
 This is computed using the **Extended Euclidean Algorithm**:
 
-\[
+$$
 d = e^{-1} \pmod{\phi(n)}
-\]
+$$
 
 ### Step 6: Form Key Pairs
 
-**Public Key**: \((e, n)\)
+**Public Key**: $(e, n)$
 
-**Private Key**: \((d, n)\)
+**Private Key**: $(d, n)$
 
 ---
 
@@ -185,31 +185,31 @@ print(f"Private key (d): {private_key[0]}")
 
 ### Key Generation with Small Primes
 
-Let \(p = 61\), \(q = 53\):
+Let $p = 61$, $q = 53$:
 
-**Step 1**: \(p = 61\), \(q = 53\) (both prime ✓)
+**Step 1**: $p = 61$, $q = 53$ (both prime ✓)
 
-**Step 2**: \(n = 61 \times 53 = 3233\)
+**Step 2**: $n = 61 \times 53 = 3233$
 
-**Step 3**: \(\phi(n) = 60 \times 52 = 3120\)
+**Step 3**: $\phi(n) = 60 \times 52 = 3120$
 
-**Step 4**: Choose \(e = 17\)
-- Check: \(\gcd(17, 3120) = 1\) ✓
+**Step 4**: Choose $e = 17$
+- Check: $\gcd(17, 3120) = 1$ ✓
 
-**Step 5**: Compute \(d = 17^{-1} \pmod{3120}\)
-- Using Extended Euclidean Algorithm: \(d = 2753\)
-- Verify: \(17 \times 2753 = 46801 = 15 \times 3120 + 1 \equiv 1 \pmod{3120}\) ✓
+**Step 5**: Compute $d = 17^{-1} \pmod{3120}$
+- Using Extended Euclidean Algorithm: $d = 2753$
+- Verify: $17 \times 2753 = 46801 = 15 \times 3120 + 1 \equiv 1 \pmod{3120}$ ✓
 
 **Result**:
-- Public Key: \((e, n) = (17, 3233)\)
-- Private Key: \((d, n) = (2753, 3233)\)
+- Public Key: $(e, n) = (17, 3233)$
+- Private Key: $(d, n) = (2753, 3233)$
 
 ---
 
 # 5. Key Properties
 
 ### Non-Uniqueness
-Different values of \(e\) and \(d\) can work for the same \(n\).
+Different values of $e$ and $d$ can work for the same $n$.
 
 ### Symmetry
 RSA encryption and decryption are symmetric:
@@ -229,8 +229,8 @@ Modern RSA uses 2048-bit or 4096-bit keys for adequate security.
 - Must pass robust primality tests
 
 ### Exponent Selection
-- \(e = 65537\) is standard (fast and avoids vulnerabilities)
-- Must ensure \(\gcd(e, \phi(n)) = 1\)
+- $e = 65537$ is standard (fast and avoids vulnerabilities)
+- Must ensure $\gcd(e, \phi(n)) = 1$
 
 ### Key Storage
 - Private key must be protected
@@ -243,8 +243,8 @@ Modern RSA uses 2048-bit or 4096-bit keys for adequate security.
 
 - **RSA Key Generation** involves six steps: prime selection, modulus computation, totient calculation, exponent selection, private exponent computation, and key formation
 - **Security Depends On**: Quality of prime selection and randomness
-- **Requirement**: \(\gcd(e, \phi(n)) = 1\) must hold
-- **Standard Choice**: \(e = 65537 = 2^{16} + 1\)
+- **Requirement**: $\gcd(e, \phi(n)) = 1$ must hold
+- **Standard Choice**: $e = 65537 = 2^{16} + 1$
 - **Modern Key Sizes**: 2048-bit or 4096-bit RSA
 - **Private Key**: Must be kept secret; never transmitted
 

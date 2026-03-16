@@ -6,38 +6,38 @@
 
 The RSA decryption operation mirrors encryption:
 
-\[
+$$
 M = C^d \bmod n
-\]
+$$
 
 where:
-- \(C\) is the ciphertext
-- \(d\) is the private exponent
-- \(n\) is the modulus
-- \(M\) is the recovered plaintext
+- $C$ is the ciphertext
+- $d$ is the private exponent
+- $n$ is the modulus
+- $M$ is the recovered plaintext
 
-The mathematical correctness of decryption is guaranteed by Euler's Theorem, which ensures that \(M^{ed} \equiv M \pmod{n}\).
+The mathematical correctness of decryption is guaranteed by Euler's Theorem, which ensures that $M^{ed} \equiv M \pmod{n}$.
 
 ---
 
 # 2. RSA Decryption Process
 
 ### Input
-- Ciphertext: \(C\)
-- Private key: \((d, n)\)
+- Ciphertext: $C$
+- Private key: $(d, n)$
 
 ### Operation
 
-\[
+$$
 M \equiv C^d \pmod{n}
-\]
+$$
 
 ### Output
-- Plaintext: \(M\)
+- Plaintext: $M$
 
 ### Security Requirement
 
-Only the holder of the private key can decrypt, since knowledge of \(d\) is required.
+Only the holder of the private key can decrypt, since knowledge of $d$ is required.
 
 ---
 
@@ -45,43 +45,43 @@ Only the holder of the private key can decrypt, since knowledge of \(d\) is requ
 
 The correctness of RSA decryption is proven using Euler's Theorem:
 
-**Theorem**: For any message \(M\) where \(\gcd(M, n) = 1\):
+**Theorem**: For any message $M$ where $\gcd(M, n) = 1$:
 
-\[
+$$
 M^{ed} \equiv M \pmod{n}
-\]
+$$
 
 **Proof**:
 
-Since \(ed \equiv 1 \pmod{\phi(n)}\):
+Since $ed \equiv 1 \pmod{\phi(n)}$:
 
-\[
+$$
 ed = k \cdot \phi(n) + 1
-\]
+$$
 
-for some integer \(k$.
+for some integer $k$.
 
 Therefore:
 
-\[
+$$
 C^d \equiv (M^e)^d \equiv M^{ed} \equiv M^{k \cdot \phi(n) + 1} \pmod{n}
-\]
+$$
 
-\[
+$$
 \equiv M \cdot (M^{\phi(n)})^k \pmod{n}
-\]
+$$
 
 By Euler's Theorem:
 
-\[
+$$
 M^{\phi(n)} \equiv 1 \pmod{n}
-\]
+$$
 
 Thus:
 
-\[
+$$
 M \cdot 1^k \equiv M \pmod{n}
-\]
+$$
 
 This proves that decryption correctly recovers the plaintext.
 
@@ -121,24 +121,24 @@ print(f"Plaintext: {plaintext}")
 # 5. Practical Example
 
 ### Scenario
-- Private key: \((d, n) = (2753, 3233)\)
-- Ciphertext: \(C = 2790\)
+- Private key: $(d, n) = (2753, 3233)$
+- Ciphertext: $C = 2790$
 
 ### Decryption
 
-\[
+$$
 M \equiv 2790^{2753} \pmod{3233}
-\]
+$$
 
 Using modular exponentiation with binary representation of 2753:
 
-1. \(2753 = 101010111001_2\) in binary
+1. $2753 = 101010111001_2$ in binary
 
 2. Compute required powers of 2790 modulo 3233
 
 3. Combine using square-and-multiply algorithm
 
-**Result**: \(M = 65\) (ASCII code for 'A')
+**Result**: $M = 65$ (ASCII code for 'A')
 
 ---
 
@@ -146,21 +146,21 @@ Using modular exponentiation with binary representation of 2753:
 
 ### Complete Example
 
-Given the key pair \((e=17, d=2753, n=3233)\):
+Given the key pair $(e=17, d=2753, n=3233)$:
 
-**Original plaintext**: \(M = 65\)
+**Original plaintext**: $M = 65$
 
 **Encryption**:
-\[
+$$
 C = 65^{17} \bmod 3233 = 2790
-\]
+$$
 
 **Decryption**:
-\[
+$$
 M' = 2790^{2753} \bmod 3233 = 65
-\]
+$$
 
-**Verification**: \(M = M' = 65\) ✓
+**Verification**: $M = M' = 65$ ✓
 
 ---
 
@@ -187,14 +187,14 @@ The blocks must be reconstructed to form the original message.
 ### Time Complexity
 
 Decryption requires:
-- Modular exponentiation: \(O(\log d)\) multiplications
-- Each multiplication: \(O(\log n)^2\) bit operations
-- Total: \(O(\log d \cdot \log n)^2\)
+- Modular exponentiation: $O(\log d)$ multiplications
+- Each multiplication: $O(\log n)^2$ bit operations
+- Total: $O(\log d \cdot \log n)^2$
 
 For 2048-bit RSA:
-- \(\log n \approx 2048\) bits
-- \(\log d \approx 2048\) bits
-- Approximately \(2048^2 \approx 4 \times 10^6\) bit operations
+- $\log n \approx 2048$ bits
+- $\log d \approx 2048$ bits
+- Approximately $2048^2 \approx 4 \times 10^6$ bit operations
 
 Modern computers can decrypt in milliseconds.
 
@@ -202,12 +202,12 @@ Modern computers can decrypt in milliseconds.
 
 # 9. Key Takeaways
 
-- **RSA Decryption**: \(M = C^d \bmod n\)
-- **Mathematical Basis**: Euler's Theorem guarantees \(M^{ed} \equiv M \pmod{n}\)
-- **Private Key**: Only holder of \(d\) can decrypt
-- **Efficiency**: \(O(\log d \cdot \log n)^2\) bit operations
+- **RSA Decryption**: $M = C^d \bmod n$
+- **Mathematical Basis**: Euler's Theorem guarantees $M^{ed} \equiv M \pmod{n}$
+- **Private Key**: Only holder of $d$ can decrypt
+- **Efficiency**: $O(\log d \cdot \log n)^2$ bit operations
 - **Correctness**: Always recovers original plaintext (except rare edge cases)
-- **Security**: Cannot decrypt without knowing \(d\) or factoring \(n\)
+- **Security**: Cannot decrypt without knowing $d$ or factoring $n$
 
 ---
 

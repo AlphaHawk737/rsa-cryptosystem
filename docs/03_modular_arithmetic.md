@@ -14,58 +14,58 @@ This property makes modular arithmetic especially suitable for computer-based cr
 
 A **modulus** is a positive integer that defines the range within which arithmetic operations are performed.
 
-If an integer \(a\) is divided by a positive integer \(n\), the result can be written as:
+If an integer $a$ is divided by a positive integer $n$, the result can be written as:
 
-\[
+$$
 a = nq + r
-\]
+$$
 
 where:
 
 | Symbol | Meaning |
 |------|------|
-| \(a\) | integer being divided |
-| \(n\) | modulus |
-| \(q\) | quotient |
-| \(r\) | remainder |
+| $a$ | integer being divided |
+| $n$ | modulus |
+| $q$ | quotient |
+| $r$ | remainder |
 
 The remainder satisfies the constraint:
 
-\[
+$$
 0 \le r < n
-\]
+$$
 
-The remainder \(r\) represents the value of \(a\) **modulo \(n\)**.
+The remainder $r$ represents the value of $a$ **modulo $n$**.
 
 ---
 
 # 3. Modular Congruence
 
-Two integers are said to be **congruent modulo \(n\)** if they leave the same remainder when divided by \(n\).
+Two integers are said to be **congruent modulo $n$** if they leave the same remainder when divided by $n$.
 
 This relationship is written as:
 
-\[
+$$
 a \equiv b \pmod{n}
-\]
+$$
 
 This statement means:
 
-\[
+$$
 n \mid (a-b)
-\]
+$$
 
-which indicates that the difference between \(a\) and \(b\) is divisible by \(n\).
+which indicates that the difference between $a$ and $b$ is divisible by $n$.
 
 ### Interpretation
 
-The congruence relation partitions integers into equivalence classes where all numbers in the same class share the same remainder when divided by \(n\).
+The congruence relation partitions integers into equivalence classes where all numbers in the same class share the same remainder when divided by $n$.
 
-For a modulus \(n\), there exist exactly \(n\) distinct equivalence classes:
+For a modulus $n$, there exist exactly $n$ distinct equivalence classes:
 
-\[
+$$
 0, 1, 2, \dots, n-1
-\]
+$$
 
 Every integer belongs to one of these classes.
 
@@ -79,23 +79,23 @@ Modular arithmetic supports operations analogous to standard arithmetic. These o
 
 If
 
-\[
+$$
 a \equiv b \pmod{n}
-\]
+$$
 
 and
 
-\[
+$$
 c \equiv d \pmod{n}
-\]
+$$
 
 then
 
-\[
+$$
 a + c \equiv b + d \pmod{n}
-\]
+$$
 
-In practice, addition is performed normally and the result is reduced modulo \(n\).
+In practice, addition is performed normally and the result is reduced modulo $n$.
 
 ---
 
@@ -103,11 +103,11 @@ In practice, addition is performed normally and the result is reduced modulo \(n
 
 Subtraction also preserves congruence:
 
-\[
+$$
 a - c \equiv b - d \pmod{n}
-\]
+$$
 
-After performing subtraction, the result is again reduced modulo \(n\).
+After performing subtraction, the result is again reduced modulo $n$.
 
 ---
 
@@ -115,9 +115,9 @@ After performing subtraction, the result is again reduced modulo \(n\).
 
 Multiplication follows the same principle:
 
-\[
+$$
 ac \equiv bd \pmod{n}
-\]
+$$
 
 Multiplication is followed by modular reduction to keep results within the modular range.
 
@@ -127,11 +127,11 @@ Multiplication is followed by modular reduction to keep results within the modul
 
 Exponentiation is particularly important in cryptographic algorithms.
 
-\[
+$$
 a^k \pmod{n}
-\]
+$$
 
-This operation raises a number to a power and then reduces the result modulo \(n\).
+This operation raises a number to a power and then reduces the result modulo $n$.
 
 Directly computing large exponents is inefficient. Therefore, cryptographic implementations use optimized algorithms such as **square-and-multiply modular exponentiation**.
 
@@ -145,9 +145,9 @@ Modular arithmetic exhibits several important algebraic properties.
 
 Operations within modular arithmetic remain within the modular set:
 
-\[
+$$
 \{0,1,2,\dots,n-1\}
-\]
+$$
 
 ---
 
@@ -155,13 +155,13 @@ Operations within modular arithmetic remain within the modular set:
 
 Addition and multiplication are associative:
 
-\[
+$$
 (a+b)+c = a+(b+c)
-\]
+$$
 
-\[
+$$
 (ab)c = a(bc)
-\]
+$$
 
 ---
 
@@ -169,13 +169,13 @@ Addition and multiplication are associative:
 
 Both addition and multiplication are commutative:
 
-\[
+$$
 a+b = b+a
-\]
+$$
 
-\[
+$$
 ab = ba
-\]
+$$
 
 ---
 
@@ -183,9 +183,9 @@ ab = ba
 
 Multiplication distributes over addition:
 
-\[
+$$
 a(b+c) = ab + ac
-\]
+$$
 
 This property holds under modular arithmetic as well.
 
@@ -195,27 +195,27 @@ This property holds under modular arithmetic as well.
 
 A key feature of modular arithmetic is **modular reduction**, which keeps numbers within the modular range.
 
-For any integer \(a\):
+For any integer $a$:
 
-\[
+$$
 a \bmod n
-\]
+$$
 
-represents the remainder when \(a\) is divided by \(n\).
+represents the remainder when $a$ is divided by $n$.
 
 Large intermediate values in calculations can be reduced at each step without affecting the final result.
 
 For example:
 
-\[
+$$
 (a \cdot b) \bmod n
-\]
+$$
 
 can be computed as
 
-\[
+$$
 ((a \bmod n) \cdot (b \bmod n)) \bmod n
-\]
+$$
 
 This property significantly reduces computational complexity in cryptographic systems.
 
@@ -236,15 +236,15 @@ The RSA cryptosystem uses modular arithmetic in the following ways:
 
 Encryption in RSA is defined as:
 
-\[
+$$
 C = M^e \bmod n
-\]
+$$
 
 Decryption is defined as:
 
-\[
+$$
 M = C^d \bmod n
-\]
+$$
 
 Both operations rely entirely on modular arithmetic.
 
@@ -278,7 +278,7 @@ def modular_exponentiation(base, exponent, modulus):
     return result
 ```
 
-This algorithm reduces computational complexity from \(O(e)\) to \(O(\log e)\), which makes modern cryptographic systems practical.
+This algorithm reduces computational complexity from $O(e)$ to $O(\log e)$, which makes modern cryptographic systems practical.
 
 ---
 
@@ -286,32 +286,32 @@ This algorithm reduces computational complexity from \(O(e)\) to \(O(\log e)\), 
 
 ## Example 1: Simple Modular Addition
 
-Let's compute \(17 + 28 \pmod{13}\):
+Let's compute $17 + 28 \pmod{13}$:
 
-1. Perform addition: \(17 + 28 = 45\)
-2. Reduce modulo 13: \(45 \div 13 = 3\) remainder \(6\)
-3. Result: \(17 + 28 \equiv 6 \pmod{13}\)
+1. Perform addition: $17 + 28 = 45$
+2. Reduce modulo 13: $45 \div 13 = 3$ remainder $6$
+3. Result: $17 + 28 \equiv 6 \pmod{13}$
 
 Alternatively, reduce each operand first:
-- \(17 \equiv 4 \pmod{13}\)
-- \(28 \equiv 2 \pmod{13}\)
-- \((4 + 2) \bmod 13 = 6 \pmod{13}\)
+- $17 \equiv 4 \pmod{13}$
+- $28 \equiv 2 \pmod{13}$
+- $(4 + 2) \bmod 13 = 6 \pmod{13}$
 
 ---
 
 ## Example 2: Modular Multiplication
 
-Let's compute \(7 \times 11 \pmod{15}\):
+Let's compute $7 \times 11 \pmod{15}$:
 
-1. Perform multiplication: \(7 \times 11 = 77\)
-2. Reduce modulo 15: \(77 \div 15 = 5\) remainder \(2\)
-3. Result: \(7 \times 11 \equiv 2 \pmod{15}\)
+1. Perform multiplication: $7 \times 11 = 77$
+2. Reduce modulo 15: $77 \div 15 = 5$ remainder $2$
+3. Result: $7 \times 11 \equiv 2 \pmod{15}$
 
 ---
 
 ## Example 3: Modular Exponentiation
 
-Let's compute \(3^{10} \pmod{7}\) using the square-and-multiply algorithm:
+Let's compute $3^{10} \pmod{7}$ using the square-and-multiply algorithm:
 
 | Step | Exponent (binary) | Operation | Result |
 |------|------|------|------|
@@ -322,17 +322,17 @@ Let's compute \(3^{10} \pmod{7}\) using the square-and-multiply algorithm:
 | 4 | 0001 | Exponent is odd, multiply | base=4, result=4 |
 | 5 | 0000 | Done | Final: 4 |
 
-Therefore, \(3^{10} \equiv 4 \pmod{7}\).
+Therefore, $3^{10} \equiv 4 \pmod{7}$.
 
 ---
 
 # 10. Key Takeaways
 
-- **Modular arithmetic** restricts operations to a fixed range \(\{0, 1, 2, \ldots, n-1\}\)
-- **Congruence** defines equivalence classes of integers that leave the same remainder modulo \(n\)
+- **Modular arithmetic** restricts operations to a fixed range $\{0, 1, 2, \ldots, n-1\}$
+- **Congruence** defines equivalence classes of integers that leave the same remainder modulo $n$
 - **Operations** (addition, subtraction, multiplication, exponentiation) preserve congruence relationships
 - **Modular reduction** keeps intermediate values bounded, enabling efficient computation on large numbers
-- **RSA encryption and decryption** rely entirely on modular exponentiation: \(C = M^e \bmod n\) and \(M = C^d \bmod n\)
+- **RSA encryption and decryption** rely entirely on modular exponentiation: $C = M^e \bmod n$ and $M = C^d \bmod n$
 - **Efficient algorithms** like square-and-multiply reduce exponentiation from exponential to logarithmic time complexity
 
 ---
@@ -343,7 +343,7 @@ This foundational knowledge of modular arithmetic prepares you for understanding
 
 - **[Euclidean Algorithm](04_euclidean_algorithm.md)** - Finding the greatest common divisor
 - **[Modular Inverse](05_modular_inverse.md)** - Computing multiplicative inverses in modular arithmetic
-- **[Euler's Totient Function](06_euler_totient_function.md)** - Computing \(\phi(n)\) for RSA key generation
+- **[Euler's Totient Function](06_euler_totient_function.md)** - Computing $\phi(n)$ for RSA key generation
 - **[Euler's Theorem](07_euler_theorem.md)** - The mathematical foundation of RSA
 
 ---

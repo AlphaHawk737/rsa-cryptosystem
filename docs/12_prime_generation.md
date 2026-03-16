@@ -4,7 +4,7 @@
 
 **Prime Generation** is the process of finding large random prime numbers suitable for RSA key generation. The quality and randomness of the primes directly impact the security of the entire RSA system.
 
-RSA requires two distinct prime numbers \(p\) and \(q\), each typically 1024-2048 bits long. Finding such large primes requires:
+RSA requires two distinct prime numbers $p$ and $q$, each typically 1024-2048 bits long. Finding such large primes requires:
 
 - Efficient primality testing
 - Random number generation
@@ -22,15 +22,15 @@ A prime number is a natural number greater than 1 that has no positive divisors 
 
 ### Density of Primes
 
-The **Prime Number Theorem** estimates the number of primes less than \(n\):
+The **Prime Number Theorem** estimates the number of primes less than $n$:
 
-\[
+$$
 \pi(n) \approx \frac{n}{\ln n}
-\]
+$$
 
 For cryptographic purposes:
 - Among random 2048-bit numbers, approximately 1 in 1400 is prime
-- This means finding a prime requires testing \(\approx 700\) candidates on average
+- This means finding a prime requires testing $\approx 700$ candidates on average
 
 ---
 
@@ -54,7 +54,7 @@ def is_prime_trial(n):
     return True
 ```
 
-**Time Complexity**: \(O(\sqrt{n})\) - infeasible for 2048-bit numbers
+**Time Complexity**: $O(\sqrt{n})$ - infeasible for 2048-bit numbers
 
 ### Miller-Rabin Primality Test
 
@@ -62,14 +62,14 @@ A probabilistic algorithm that is efficient and suitable for cryptography.
 
 **Algorithm**:
 
-For odd number \(n\), write \(n - 1 = 2^r \cdot d\) where \(d\) is odd.
+For odd number $n$, write $n - 1 = 2^r \cdot d$ where $d$ is odd.
 
-For a witness \(a\):
-1. Compute \(x = a^d \bmod n\)
-2. If \(x = 1\) or \(x = n-1\), return "probably prime"
-3. For \(i\) from 0 to \(r-2\):
-   - \(x = x^2 \bmod n\)
-   - If \(x = n-1\), return "probably prime"
+For a witness $a$:
+1. Compute $x = a^d \bmod n$
+2. If $x = 1$ or $x = n-1$, return "probably prime"
+3. For $i$ from 0 to $r-2$:
+   - $x = x^2 \bmod n$
+   - If $x = n-1$, return "probably prime"
 4. Return "composite"
 
 Repeat with multiple random witnesses for high confidence.
@@ -117,9 +117,9 @@ def is_prime_miller_rabin(n, k=40):
     return True
 ```
 
-**Time Complexity**: \(O(k \log^3 n)\) - suitable for cryptography
+**Time Complexity**: $O(k \log^3 n)$ - suitable for cryptography
 
-**Error Probability**: After \(k\) iterations, probability of false prime is at most \(4^{-k}\)
+**Error Probability**: After $k$ iterations, probability of false prime is at most $4^{-k}$
 
 ---
 
@@ -183,9 +183,9 @@ print(f"Bit length: {p.bit_length()}")
 ### Strong Primes
 
 For RSA, **strong primes** are preferred:
-- \(p\) is prime
-- \(p-1\) has a large prime factor
-- \(p+1\) has a large prime factor
+- $p$ is prime
+- $p-1$ has a large prime factor
+- $p+1$ has a large prime factor
 
 These provide additional security against some factorization attacks.
 
@@ -241,7 +241,7 @@ Using Miller-Rabin with 40 iterations:
 
 - **Prime Generation**: Finding large random primes for RSA
 - **Miller-Rabin Test**: Efficient probabilistic primality test
-- **Prime Density**: \(\approx n/\ln n\) primes less than \(n\)
+- **Prime Density**: $\approx n/\ln n$ primes less than $n$
 - **Algorithm**: Generate random candidates and test until prime found
 - **Security**: Use cryptographically secure random number generators
 - **Strong Primes**: Preferred for additional security properties

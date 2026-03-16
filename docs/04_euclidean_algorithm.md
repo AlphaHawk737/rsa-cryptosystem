@@ -16,31 +16,31 @@ The algorithm's elegant design and logarithmic time complexity make it ideal for
 
 # 2. Greatest Common Divisor (GCD)
 
-The **greatest common divisor** of two integers \(a\) and \(b\) is the largest positive integer that divides both \(a\) and \(b\) without remainder.
+The **greatest common divisor** of two integers $a$ and $b$ is the largest positive integer that divides both $a$ and $b$ without remainder.
 
 We denote this as:
 
-\[
+$$
 \gcd(a, b)
-\]
+$$
 
 ### Definition
 
-For integers \(a\) and \(b\) (where \(b \neq 0\)), \(\gcd(a, b)\) is the largest integer \(d\) such that:
+For integers $a$ and $b$ (where $b \neq 0$), $\gcd(a, b)$ is the largest integer $d$ such that:
 
-- \(d \mid a\) (d divides a)
-- \(d \mid b\) (d divides b)
+- $d \mid a$ (d divides a)
+- $d \mid b$ (d divides b)
 
 ### Example
 
-For \(a = 48\) and \(b = 18\):
+For $a = 48$ and $b = 18$:
 
 - Divisors of 48: 1, 2, 3, 4, 6, 8, 12, 16, 24, 48
 - Divisors of 18: 1, 2, 3, 6, 9, 18
 - Common divisors: 1, 2, 3, 6
 - Greatest common divisor: 6
 
-Therefore, \(\gcd(48, 18) = 6\).
+Therefore, $\gcd(48, 18) = 6$.
 
 ---
 
@@ -48,17 +48,17 @@ Therefore, \(\gcd(48, 18) = 6\).
 
 The Euclidean Algorithm computes the GCD using the following principle:
 
-\[
+$$
 \gcd(a, b) = \gcd(b, a \bmod b)
-\]
+$$
 
 The algorithm repeatedly applies this reduction until the remainder becomes zero, at which point the GCD is the last non-zero remainder.
 
 ## Algorithm Statement
 
-**Input**: Two non-negative integers \(a\) and \(b\) where \(a \geq b\)
+**Input**: Two non-negative integers $a$ and $b$ where $a \geq b$
 
-**Output**: \(\gcd(a, b)\)
+**Output**: $\gcd(a, b)$
 
 ```
 1. While b ≠ 0:
@@ -67,22 +67,22 @@ The algorithm repeatedly applies this reduction until the remainder becomes zero
 2. Return a
 ```
 
-This process continues until \(b = 0\), at which point \(a\) contains the GCD.
+This process continues until $b = 0$, at which point $a$ contains the GCD.
 
 ---
 
 ## 4. Example: Computing GCD(48, 18)
 
-Let's trace through the Euclidean Algorithm with \(a = 48\) and \(b = 18\):
+Let's trace through the Euclidean Algorithm with $a = 48$ and $b = 18$:
 
 | Step | a | b | a mod b | Operation |
 |------|---|---|---------|-----------|
-| 0 | 48 | 18 | 12 | \(48 = 2 \times 18 + 12\) |
-| 1 | 18 | 12 | 6 | \(18 = 1 \times 12 + 6\) |
-| 2 | 12 | 6 | 0 | \(12 = 2 \times 6 + 0\) |
+| 0 | 48 | 18 | 12 | $48 = 2 \times 18 + 12$ |
+| 1 | 18 | 12 | 6 | $18 = 1 \times 12 + 6$ |
+| 2 | 12 | 6 | 0 | $12 = 2 \times 6 + 0$ |
 | 3 | 6 | 0 | — | Algorithm terminates |
 
-**Result**: \(\gcd(48, 18) = 6\)
+**Result**: $\gcd(48, 18) = 6$
 
 ---
 
@@ -117,15 +117,15 @@ print(gcd(1071, 462)) # Output: 21
 
 The Euclidean Algorithm is remarkably efficient. The number of steps required is bounded by:
 
-\[
+$$
 O(\log \min(a, b))
-\]
+$$
 
 This logarithmic complexity makes it suitable for cryptographic operations involving very large integers.
 
 ### Why is it Logarithmic?
 
-At each step, at least one of the numbers is reduced by at least half. This is guaranteed by the property that when \(a \geq 2b\), we have \(a \bmod b < a/2\).
+At each step, at least one of the numbers is reduced by at least half. This is guaranteed by the property that when $a \geq 2b$, we have $a \bmod b < a/2$.
 
 Therefore, the algorithm requires at most 5 times the number of digits in the smaller number of steps.
 
@@ -133,11 +133,11 @@ Therefore, the algorithm requires at most 5 times the number of digits in the sm
 
 # 7. Extended Euclidean Algorithm
 
-The **Extended Euclidean Algorithm** not only computes \(\gcd(a, b)\) but also finds integers \(x\) and \(y\) such that:
+The **Extended Euclidean Algorithm** not only computes $\gcd(a, b)$ but also finds integers $x$ and $y$ such that:
 
-\[
+$$
 ax + by = \gcd(a, b)
-\]
+$$
 
 This is known as **Bézout's identity**.
 
@@ -175,10 +175,10 @@ The Extended Euclidean Algorithm is essential for computing the modular inverse 
 
 # 8. Key Takeaways
 
-- **The Euclidean Algorithm** efficiently computes the greatest common divisor in \(O(\log n)\) time
+- **The Euclidean Algorithm** efficiently computes the greatest common divisor in $O(\log n)$ time
 - **GCD Computation** is fundamental to number theory and cryptography
 - **Extended Euclidean Algorithm** finds Bézout coefficients, enabling modular inverse computation
-- **Coprimality** (when \(\gcd(a, b) = 1\)) is crucial for RSA key generation
+- **Coprimality** (when $\gcd(a, b) = 1$) is crucial for RSA key generation
 - **RSA Dependence**: The algorithm is essential for verifying key validity and computing the decryption exponent
 
 ---

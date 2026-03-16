@@ -274,7 +274,7 @@ print(f"Secure communication successful: {recovered}")
 
 ### Confidentiality
 - Only private key holder can decrypt
-- Computational infeasibility of factoring \(n\)
+- Computational infeasibility of factoring $n$
 
 ### Authenticity
 - Sender can prove they sent a message (digital signature)
@@ -290,11 +290,11 @@ print(f"Secure communication successful: {recovered}")
 
 | Operation | Complexity | Time (2048-bit) |
 |-----------|-----------|-----------------|
-| Key Generation | \(O(\log^2 n)\) for primality test | ~1 minute |
-| Encryption | \(O(\log e \cdot \log n)^2\) | ~1 ms |
-| Decryption | \(O(\log d \cdot \log n)^2\) | ~1 ms |
-| Signing | \(O(\log d \cdot \log n)^2\) | ~1 ms |
-| Verification | \(O(\log e \cdot \log n)^2\) | ~1 ms |
+| Key Generation | $O(\log^2 n)$ for primality test | ~1 minute |
+| Encryption | $O(\log e \cdot \log n)^2$ | ~1 ms |
+| Decryption | $O(\log d \cdot \log n)^2$ | ~1 ms |
+| Signing | $O(\log d \cdot \log n)^2$ | ~1 ms |
+| Verification | $O(\log e \cdot \log n)^2$ | ~1 ms |
 
 ---
 

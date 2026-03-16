@@ -96,13 +96,13 @@ The key insight behind RSA was the use of **number theory**, specifically proper
 
 The algorithm uses the following concept:
 
-If a number \( n \) is the product of two large prime numbers:
+If a number $ n $ is the product of two large prime numbers:
 
-\[
+$$
 n = p \times q
-\]
+$$
 
-then it is computationally easy to calculate \( n \), but extremely difficult to determine the original primes \( p \) and \( q \) when \( n \) is very large.
+then it is computationally easy to calculate $ n $, but extremely difficult to determine the original primes $ p $ and $ q $ when $ n $ is very large.
 
 This is known as the **integer factorization problem**.
 

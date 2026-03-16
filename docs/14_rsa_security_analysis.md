@@ -16,11 +16,11 @@ The security of RSA depends on:
 
 ### The Factorization Problem
 
-Given a large composite number \(n = p \times q\), finding the prime factors \(p\) and \(q\) is computationally infeasible.
+Given a large composite number $n = p \times q$, finding the prime factors $p$ and $q$ is computationally infeasible.
 
-**Theorem**: If an attacker can factor \(n\), they can:
-1. Compute \(\phi(n) = (p-1)(q-1)\)
-2. Compute \(d = e^{-1} \pmod{\phi(n)}\)
+**Theorem**: If an attacker can factor $n$, they can:
+1. Compute $\phi(n) = (p-1)(q-1)$
+2. Compute $d = e^{-1} \pmod{\phi(n)}$
 3. Decrypt any message
 
 ### Why Factoring is Hard
@@ -31,10 +31,10 @@ No polynomial-time algorithm for factoring is known.
 
 | Algorithm | Time Complexity |
 |-----------|-----------------|
-| Trial Division | \(O(\sqrt{n})\) |
-| Pollard's rho | \(O(n^{1/4})\) |
-| Quadratic Sieve | \(O(e^{\sqrt{\log n \log \log n}})\) |
-| General Number Field Sieve (GNFS) | \(O(e^{(64/9)^{1/3}(\log n)^{1/3}(\log \log n)^{2/3}})\) |
+| Trial Division | $O(\sqrt{n})$ |
+| Pollard's rho | $O(n^{1/4})$ |
+| Quadratic Sieve | $O(e^{\sqrt{\log n \log \log n}})$ |
+| General Number Field Sieve (GNFS) | $O(e^{(64/9)^{1/3}(\log n)^{1/3}(\log \log n)^{2/3}})$ |
 
 **Practical Difficulty**:
 - 768-bit RSA factored in 2009 (required thousands of CPU-years)
@@ -48,25 +48,25 @@ No polynomial-time algorithm for factoring is known.
 
 ### Theorem: RSA Correctness
 
-For any message \(M\) where \(\gcd(M, n) = 1\):
+For any message $M$ where $\gcd(M, n) = 1$:
 
-\[
+$$
 (M^e)^d \equiv M \pmod{n}
-\]
+$$
 
-**Proof**: By Euler's Theorem, since \(ed \equiv 1 \pmod{\phi(n)}\):
+**Proof**: By Euler's Theorem, since $ed \equiv 1 \pmod{\phi(n)}$:
 
-\[
+$$
 M^{ed} \equiv M^{1 + k\phi(n)} \equiv M \cdot (M^{\phi(n)})^k \equiv M \pmod{n}
-\]
+$$
 
 This ensures decryption always recovers plaintext.
 
 ### One-Way Function
 
 RSA encryption is a **one-way function**:
-- Easy to compute: \(C = M^e \bmod n\) (milliseconds)
-- Hard to invert: Finding \(M\) from \(C\) without \(d\) requires factoring
+- Easy to compute: $C = M^e \bmod n$ (milliseconds)
+- Hard to invert: Finding $M$ from $C$ without $d$ requires factoring
 
 ---
 
@@ -90,9 +90,9 @@ RSA encryption is a **one-way function**:
 ### Homomorphic Property Attack
 
 RSA has multiplicative homomorphism:
-\[
+$$
 E(M_1) \cdot E(M_2) \equiv E(M_1 \cdot M_2) \pmod{n}
-\]
+$$
 
 **Risk**: Can construct valid ciphertexts from known ones
 
@@ -104,7 +104,7 @@ E(M_1) \cdot E(M_2) \equiv E(M_1 \cdot M_2) \pmod{n}
 
 ### Timing Attacks
 
-Decryption time varies with the value of \(d\).
+Decryption time varies with the value of $d$.
 
 ```python
 # Vulnerable to timing attacks
@@ -145,10 +145,10 @@ def rsa_decrypt_secure(ciphertext, d, n):
 
 ### Weak Prime Selection
 
-If \(p\) or \(q\) are weak primes, RSA becomes vulnerable.
+If $p$ or $q$ are weak primes, RSA becomes vulnerable.
 
 **Weak Primes**:
-- \(p - 1\) or \(q - 1\) with all small prime factors
+- $p - 1$ or $q - 1$ with all small prime factors
 - Primes close to powers of 2
 - Primes from non-random generation
 
@@ -214,7 +214,7 @@ Private key generation must use cryptographically secure random number generator
 
 RSA with OAEP padding is semantically secure under the **RSA Assumption**:
 
-> Computing \(e\)-th roots modulo \(n\) is computationally infeasible without knowledge of \(\phi(n)\).
+> Computing $e$-th roots modulo $n$ is computationally infeasible without knowledge of $\phi(n)$.
 
 ### Theorem
 

@@ -17,7 +17,7 @@ Understanding these attacks is essential for secure RSA deployment. This documen
 
 ### Pollard's Rho Algorithm
 
-Finds prime factors in expected \(O(n^{1/4})\) time.
+Finds prime factors in expected $O(n^{1/4})$ time.
 
 **Effectiveness**: Useful when factors are not too large
 
@@ -27,7 +27,7 @@ Finds prime factors in expected \(O(n^{1/4})\) time.
 
 Better than trial division for moderately large numbers (up to ~100 digits).
 
-**Complexity**: \(O(e^{\sqrt{\log n \log \log n}})\)
+**Complexity**: $O(e^{\sqrt{\log n \log \log n}})$
 
 **Mitigation**: Use 2048+ bit keys
 
@@ -69,7 +69,7 @@ def encrypt_oaep(message, public_key):
 
 ### Execution Time Variation
 
-Decryption time depends on the value of \(d\).
+Decryption time depends on the value of $d$.
 
 **Attack**: Monitor decryption time to infer bits of private key.
 
@@ -125,9 +125,9 @@ Analyzes power consumption during cryptographic operations.
 
 # 6. Small Exponent Attacks
 
-### Common Exponent Attack (\(e = 3\))
+### Common Exponent Attack ($e = 3$)
 
-If multiple parties use same public exponent \(e\) and same modulus size:
+If multiple parties use same public exponent $e$ and same modulus size:
 
 ```
 C₁ = M^3 mod n₁
@@ -135,11 +135,11 @@ C₂ = M^3 mod n₂
 C₃ = M^3 mod n₃
 ```
 
-Using Chinese Remainder Theorem, recover \(M^3\), then compute cube root.
+Using Chinese Remainder Theorem, recover $M^3$, then compute cube root.
 
 ### Mitigation
 
-- Use large exponent (\(e = 65537\))
+- Use large exponent ($e = 65537$)
 - Pad messages before encryption
 - Use OAEP padding
 
@@ -147,9 +147,9 @@ Using Chinese Remainder Theorem, recover \(M^3\), then compute cube root.
 
 # 7. Low Exponent Decryption Attack
 
-### When \(d\) is Small
+### When $d$ is Small
 
-If decryption exponent \(d\) is small (bad choice during key generation):
+If decryption exponent $d$ is small (bad choice during key generation):
 
 ```
 If d < n^(1/4), can find d using continuous fractions
@@ -157,9 +157,9 @@ If d < n^(1/4), can find d using continuous fractions
 
 ### Mitigation
 
-- Ensure \(\gcd(e, \phi(n)) = 1\) properly
-- Standard: use \(e = 65537\)
-- Verify \(d \geq 2^{(n-1)/2}\)
+- Ensure $\gcd(e, \phi(n)) = 1$ properly
+- Standard: use $e = 65537$
+- Verify $d \geq 2^{(n-1)/2}$
 
 ---
 
@@ -170,10 +170,10 @@ If d < n^(1/4), can find d using continuous fractions
 Attacker chooses ciphertexts adaptively and observes decryption results.
 
 **Example**:
-- Obtain ciphertext \(C\)
-- Compute related ciphertext: \(C' = C \times 2^e \bmod n\)
-- Decrypt to get: \(M' = M \times 2 \bmod n\)
-- Recover \(M\)
+- Obtain ciphertext $C$
+- Compute related ciphertext: $C' = C \times 2^e \bmod n$
+- Decrypt to get: $M' = M \times 2 \bmod n$
+- Recover $M$
 
 ### Mitigation
 
@@ -232,8 +232,8 @@ C = (C1 * C2) mod n  # Decrypts to M1 * M2
 | Padding oracle | Use OAEP instead of PKCS#1 v1.5 |
 | Timing | Constant-time exponentiation |
 | Power analysis | Randomization, masking, HSM |
-| Small exponent | Use \(e = 65537\), padding |
-| Low \(d\) | Proper key generation |
+| Small exponent | Use $e = 65537$, padding |
+| Low $d$ | Proper key generation |
 | Chosen ciphertext | Randomized padding, validation |
 
 ---

@@ -2,13 +2,13 @@
 
 ## 1. Introduction
 
-**Modular Exponentiation** is the computation of \(a^b \bmod n\), where \(a\), \(b\), and \(n\) can be extremely large numbers (thousands of bits).
+**Modular Exponentiation** is the computation of $a^b \bmod n$, where $a$, $b$, and $n$ can be extremely large numbers (thousands of bits).
 
 This operation is essential to both RSA encryption and decryption:
-- Encryption: \(C = M^e \bmod n\)
-- Decryption: \(M = C^d \bmod n\)
+- Encryption: $C = M^e \bmod n$
+- Decryption: $M = C^d \bmod n$
 
-Without efficient modular exponentiation algorithms, RSA would be computationally infeasible. The naive approach of computing \(a^b\) and then reducing modulo \(n\) would require intermediate values with billions of bits, impossible to handle.
+Without efficient modular exponentiation algorithms, RSA would be computationally infeasible. The naive approach of computing $a^b$ and then reducing modulo $n$ would require intermediate values with billions of bits, impossible to handle.
 
 ---
 
@@ -16,43 +16,43 @@ Without efficient modular exponentiation algorithms, RSA would be computationall
 
 ### Naive Approach Problem
 
-Computing \(a^b\) directly and then taking modulo \(n\) fails because:
+Computing $a^b$ directly and then taking modulo $n$ fails because:
 
-- \(a^b\) becomes astronomically large
-- For \(a = 2^{2048}\) and \(b = 2^{2048}\), the result would have \(2^{2048} \times 2048\) bits
+- $a^b$ becomes astronomically large
+- For $a = 2^{2048}$ and $b = 2^{2048}$, the result would have $2^{2048} \times 2048$ bits
 - This is completely impractical to compute
 
 ### Solution: Reduce at Each Step
 
-Instead of computing the full exponent, reduce modulo \(n\) at each step:
+Instead of computing the full exponent, reduce modulo $n$ at each step:
 
-\[
+$$
 (a \times b) \bmod n = ((a \bmod n) \times (b \bmod n)) \bmod n
-\]
+$$
 
-This keeps intermediate values bounded by \(n\).
+This keeps intermediate values bounded by $n$.
 
 ---
 
 # 3. Square-and-Multiply Algorithm
 
-The **square-and-multiply** algorithm (also called binary exponentiation) reduces time complexity from \(O(b)\) to \(O(\log b)\).
+The **square-and-multiply** algorithm (also called binary exponentiation) reduces time complexity from $O(b)$ to $O(\log b)$.
 
 ### Algorithm Principle
 
 Express the exponent in binary and process each bit:
 
-\[
+$$
 b = \sum_{i=0}^{k} b_i \times 2^i
-\]
+$$
 
-where each \(b_i\) is 0 or 1.
+where each $b_i$ is 0 or 1.
 
 Then:
 
-\[
+$$
 a^b = a^{\sum b_i \times 2^i} = \prod_{i: b_i=1} a^{2^i}
-\]
+$$
 
 ### Algorithm Steps
 
@@ -113,9 +113,9 @@ print(pow(2, 1000000, 1000000007))  # Using Python's built-in
 
 # 5. Step-by-Step Example
 
-### Compute \(3^{13} \bmod 17\)
+### Compute $3^{13} \bmod 17$
 
-**Binary representation**: \(13 = 1101_2 = 8 + 4 + 1\)
+**Binary representation**: $13 = 1101_2 = 8 + 4 + 1$
 
 | Step | Exponent | Exponent (binary) | Base | Result | Operation |
 |------|----------|-------------------|------|--------|-----------|
@@ -125,7 +125,7 @@ print(pow(2, 1000000, 1000000007))  # Using Python's built-in
 | 3 | 1 | 1 | 13²≡16 | 5×16≡80≡12 | square: 16, exponent odd: 5×16 mod 17 = 12 |
 | 4 | 0 | — | — | 12 | exponent = 0, done |
 
-**Result**: \(3^{13} \bmod 17 = 12\)
+**Result**: $3^{13} \bmod 17 = 12$
 
 ---
 
@@ -135,8 +135,8 @@ print(pow(2, 1000000, 1000000007))  # Using Python's built-in
 
 | Method | Time Complexity | Practical |
 |--------|-----------------|-----------|
-| Naive (repeated multiplication) | \(O(b)\) | Infeasible for large \(b\) |
-| Square-and-Multiply | \(O(\log b)\) | Practical for 2048-bit exponents |
+| Naive (repeated multiplication) | $O(b)$ | Infeasible for large $b$ |
+| Square-and-Multiply | $O(\log b)$ | Practical for 2048-bit exponents |
 
 ### Example: 2048-bit Exponentiation
 
@@ -188,8 +188,8 @@ For very large exponents, process multiple bits at once (faster but more memory)
 
 # 9. Key Takeaways
 
-- **Modular Exponentiation**: Computing \(a^b \bmod n\) efficiently
-- **Square-and-Multiply**: Reduces complexity from \(O(b)\) to \(O(\log b)\)
+- **Modular Exponentiation**: Computing $a^b \bmod n$ efficiently
+- **Square-and-Multiply**: Reduces complexity from $O(b)$ to $O(\log b)$
 - **Essential to RSA**: Makes encryption and decryption computationally feasible
 - **Binary Method**: Process exponent bit by bit
 - **Practical**: 2048-bit exponentiation in milliseconds
